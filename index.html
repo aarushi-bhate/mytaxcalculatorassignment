@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tax Calculation</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Optional: Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="d-flex justify-content-center align-items-center vh-100">
+
+<div class="container">
+        <!-- Card container -->
+        <div class="card">
+
+            <div class="card-header bg-primary text-white">
+                <h3>Tax Calculation Form</h3>
+            </div>
+    <div class="card-body">
+    <form id="taxForm" onsubmit="calculateTax(event)">
+
+        <!-- Income input -->
+        <div class="mb-3">
+            <label for="income">Enter Gross Annual Income:</label>
+            <input type="text" class="form-control form-control-lg" aria-label=".form-control-lg example" id="income" placeholder="Enter Gross Annual Income" name="income" required>
+            <div class="invalid-feedback">Please enter a valid income.</div>
+            <span class="error-icon" id="incomeError">!</span>
+            <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Enter your total annual income before any deductions.">
+            <i class="fa fa-question-circle"></i>
+            </span>
+        </div>
+        <!-- Extra income input -->
+
+        <div class="mb-3">
+            <label for="extraIncome" class="form-label">Extra Income:</label>
+            <input type="text" class="form-control" id="extraIncome" name="extraIncome" required>
+            <span class="error-icon" id="extraIncomeError">!</span>
+            <div class="invalid-feedback">Please enter a valid extra income.</div>
+            <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Enter your extra income earned before any deductions.">
+            <i class="fa fa-question-circle"></i>
+            </span>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="deductions" class="form-label">Deduction:</label>
+            <input type="text" class="form-control" id="deductions" name="deductions" required>
+            <span class="error-icon" id="deductionsError">!</span>
+            <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Enter deductions">
+            <i class="fa fa-question-circle"></i>
+            </span>
+            <div class="invalid-feedback">Please enter a valid deduction amount.</div>
+
+        </div>
+<!-- Age category dropdown -->
+                    <div class="mb-3">
+                        <label for="ageCategory" class="form-label">Age Category</label>
+                        <select class="form-select" id="ageCategory" name="ageCategory" required>
+                            <option value="" disabled selected>Select an age category</option>
+                            <option value="1">Below 40</option>
+                            <option value="2">40 & Above, Below 60</option>
+                            <option value="3">60 & Above</option>
+                        </select>
+                        <span class="error-icon" id="ageCategoryError">!</span>
+                        <div class="invalid-feedback">Please select an age category.</div>
+                    </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- Modal structure -->
+<div id="resultModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="resultText">Tax calculation result will be shown here.</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+ <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb49Qk5dNt44h6zIJH9BBVm1OVQlfAHK/axf9OukJtST6JhSB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-KE6wWh0El9jw7NjbG1kR6OjC3p6s9Fz6yzW/L8vhjP1SnBIdUEML7H/xsk6wvAgA" crossorigin="anonymous"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+
+
+</body>
+</html>
+
